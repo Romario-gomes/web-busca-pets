@@ -1,0 +1,39 @@
+.container{
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+}
+
+.header{
+  width: 100vw;
+  height: 80px;
+  background-color: #EFF0F2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.content{
+  height: 46px;
+  width: 70vw;
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+}
+
+.menu ul{
+  display: flex;
+  list-style: none;
+  padding: 0 0.5rem;
+  line-height: 46px;
+}
+
+.menu ul li{
+  padding: 0 1rem;
+  color: var(--black-700);
+  font-weight: 600;
+  font-size: 16px;
+  font-style: normal;
+}
