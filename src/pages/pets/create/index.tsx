@@ -6,6 +6,9 @@ export default function CreatePet() {
   return (
     <div className={style.container}>
       <Header></Header>
+      <div className={style.contentCreatePet}>
+
+      </div>
       <Footer />
     </div>
   )

@@ -1,7 +1,11 @@
 footer.main{
   width: 100vw;
-  height: 615px;
+  height: 400px;
   background: #EFF0F2;
+  display: flex;
+  justify-content: space-between;
+
+  flex-direction: column;
   color: var(--black-700);
 }
 
@@ -29,9 +33,26 @@ footer.main{
   flex: 4;
   display: flex;
   padding: 1rem;
+  flex-direction: column;
   justify-content: center;
 
+  p{
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--black-700);
+    margin-bottom: 1rem;
+  }
+
+  ul li{
+    font-size: 15px;
+    font-weight: 500;
+    font-style: normal;
+    list-style: none;
+    padding: 0.25rem;
+  }
 }
+
+
 
 .buttons{
   display: flex;
@@ -47,4 +68,19 @@ footer.main{
   background: #E0E2E6;
   border-radius: 6px;
   border: 0;
+}
+
+.footerBottom{
+  border-top: 0.1px solid #ccc;
+    div{
+      display: flex;
+      justify-content: space-between;
+      padding: 1rem 0;
+    }
+}
+
+.textFooterBottom{
+  font-size: 14px;
+  font-weight: 600;
+  font-style: normal;
 }
