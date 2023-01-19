@@ -21,7 +21,7 @@ export default function CreatePet() {
         <Container>
           
           <form className={style.form}>
-          <h1>Criar Conta</h1>
+          <h1>Adicionar Pet</h1>
             <div>
               <label htmlFor="name" className={style.labelForm}>Nome</label>
               <Input type="text" id="name" name="name" />
