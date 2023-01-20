@@ -1,3 +1,4 @@
+import { forwardRef, ForwardRefRenderFunction } from 'react';
 import style from './input.module.scss';
 
 interface IInputProps{
@@ -6,8 +7,16 @@ interface IInputProps{
   id?: string;
 }
 
-export default function Input({ type, name, id }: IInputProps) {
+const InputBase: ForwardRefRenderFunction<HTMLInputElement, IInputProps> = ({ type, name, id, ...rest }) => {
   return (
-    <input className={style.input} type={type} name={name} id={id} />
+    <input
+      className={style.input}
+      type={type}
+      name={name}
+      id={id}
+      {...rest}
+    />
   )
 }
+
+export const Input = forwardRef(InputBase);
