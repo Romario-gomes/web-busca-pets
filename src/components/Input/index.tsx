@@ -7,13 +7,14 @@ interface IInputProps{
   id?: string;
 }
 
-const InputBase: ForwardRefRenderFunction<HTMLInputElement, IInputProps> = ({ type, name, id, ...rest }) => {
+const InputBase: ForwardRefRenderFunction<HTMLInputElement, IInputProps> = ({ type, name, id,...rest }, ref) => {
   return (
     <input
       className={style.input}
       type={type}
       name={name}
       id={id}
+      ref={ref}
       {...rest}
     />
   )

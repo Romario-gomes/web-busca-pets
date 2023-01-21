@@ -1,7 +1,7 @@
 .form{
   display: flex;
   flex-direction: column;
-  min-height: 400px;
+  min-height: 600px;
   margin: 4rem 0;
   color: var(--black-700);
 
@@ -11,6 +11,49 @@
     color: var(--black-700);
 
   }
+}
+
+.contentForm{
+  display: flex;
+  height: 500px;
+}
+
+.containerPhoto{
+  flex: 1;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background-color: var(--gray-200);
+  padding: 1rem;
+  margin: 0 1rem;
+  border-radius: 0.5rem;
+
+  h6{
+    font-size: 16px;
+    margin-top: 1rem;
+    font-weight: 600;
+    color: var(--black-700);
+    line-height: 20px;
+  }
+
+  .contentUpload{
+    text-align: center;
+    margin-top: 1rem;
+
+    p{
+      font-size: 15px;
+      margin-top: 0.5rem;
+      font-weight: 400;
+      font-style: normal;
+      color: var(--gray-300)
+    }
+  }
+}
+.contentInputs{
+  flex: 4;
+  margin-top: 2rem;
+  padding: 0 1rem;
+
 }
 
 .labelForm{
