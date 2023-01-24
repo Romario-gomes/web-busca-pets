@@ -1,5 +1,5 @@
 
-import { useForm } from 'react-hook-form';
+import { SubmitHandler, useForm } from 'react-hook-form';
 import Container from "../../../components/Container";
 import Footer from "../../../components/Footer";
 import Header from "../../../components/Header";
@@ -8,14 +8,26 @@ import { api } from "../../../services/api";
 import style from "./pet.module.scss";
 import profile from "../../../../public/profile.svg";
 import Image from 'next/image';
+import { useRouter } from "next/router";
+
+
+type ICreatePet = {
+  name: string;
+  genre: string;
+  type: string;
+  age: number;
+  weight: number;
+}
+
 
 export default function CreatePet() {
-  const { register, handleSubmit } = useForm();
+  const router = useRouter();
+  const { register, handleSubmit, formState: { errors } } = useForm();
 
-  function handleCreatePet(values: any) {
-    console.log("Valores:", values);
-    /* const response = await api.get('pets/list');
-    console.log("Resposta: ", response.data); */
+  async function handleCreatePet({name, age, type, weight, genre}: any) {
+    await api.post('pets', {name, age, type, weight, genre});
+    router.push('/');
+    return;
   }
 
   return (
@@ -45,30 +57,46 @@ export default function CreatePet() {
                 <h1>Cadastrar Pet</h1>
                 <div>
                   <label htmlFor="name" className={style.labelForm}>Nome</label>
-                  <Input type="text" id="name" {...register("name")} />
+                  <Input type="text" id="name" {...register("name", { required: true })} />
+                  {errors?.name?.type === "required" && (
+                    <p className={style.errorMessage}>Nome é obrigatório</p>
+                  )}
+
                 </div>
 
                 <div className={style.inputGroup}>
                   <div className={style.formController}>
                     <label htmlFor="type" className={style.labelForm}>Tipo</label>
-                    <Input type="text" id="type" {...register("type")} />
+                    <Input type="text" id="type" {...register("type", { required: true })} />
+                    {errors?.type?.type === "required" && (
+                    <p className={style.errorMessage}>Tipo é obrigatório</p>
+                  )}
                   </div>
 
                   <div className={style.formController}>
                     <label htmlFor="age" className={style.labelForm}>Idade</label>
-                    <Input type="number" id="age"  {...register("age")} />
+                    <Input type="number" id="age"  {...register("age", { required: true })} />
+                    {errors?.age?.type === "required" && (
+                      <p className={style.errorMessage}>Idade é obrigatório</p>
+                    )}
                   </div>
                 </div>
 
                 <div className={style.inputGroup}>
                   <div className={style.formController}>
                     <label htmlFor="wight" className={style.labelForm}>Peso kg</label>
-                    <Input type="number" id="weight"  {...register("weight")} />
+                    <Input type="number" id="weight"  {...register("weight", { required: true })} />
+                    {errors?.weight?.type === "required" && (
+                      <p className={style.errorMessage}>Peso é obrigatório</p>
+                    )}
                   </div>
 
                   <div className={style.formController}>
                     <label htmlFor="genre" className={style.labelForm}>Sexo</label>
-                    <Input type="text" id="genre"  {...register("genre")} />
+                    <Input type="text" id="genre"  {...register("genre", { required: true })} />
+                    {errors?.genre?.type === "required" && (
+                      <p className={style.errorMessage}>Sexo é obrigatório</p>
+                    )}
                   </div>
                 </div>
 
