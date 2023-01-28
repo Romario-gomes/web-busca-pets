@@ -32,7 +32,6 @@ export default function CreatePet() {
 
   return (
     <div className={style.container}>
-      <Header />
       <div className={style.contentCreatePet}>
         <Container>
           <form
@@ -102,7 +101,7 @@ export default function CreatePet() {
 
                 <div className={style.buttonsSubmit}>
                 <button type="button">Cancel</button>
-                <button type="submit">Save</button>
+                <button type="submit">Save</button> 
               </div>
               </div>
             </div>
@@ -110,7 +109,6 @@ export default function CreatePet() {
           </form>
         </Container>
       </div>
-      <Footer />
     </div>
   )
 }
