@@ -10,10 +10,10 @@ export default function Header() {
           <Logo />
           <nav className={style.menu}>
             <ul>
-              <li><a href="#">Find a property</a></li>
-              <li><a href="#">Share Stories</a></li>
-              <li><a href="#">Rental Guides</a></li>
-              <li><a href="#">Contact ONG</a></li>
+              <li><a href="#">Buscar Pet</a></li>
+              <li><a href="#">Divulgar Pet</a></li>
+              <li><a href="#">Sobre Nós</a></li>
+              <li><a href="#">Contato ONG</a></li>
             </ul>
           </nav>
 

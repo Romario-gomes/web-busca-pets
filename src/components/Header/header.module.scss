@@ -9,7 +9,7 @@
 .header{
   width: 100vw;
   height: 80px;
-  background-color: #EFF0F2;
+  background-color: #50C9C3;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -36,4 +36,9 @@
   font-weight: 600;
   font-size: 16px;
   font-style: normal;
+}
+
+.menu ul li a:hover{
+  transition: 0.2s;
+  color: #eab24a;
 }
