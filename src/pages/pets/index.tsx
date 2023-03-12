@@ -27,7 +27,13 @@ export default function Home() {
     <Container>
       <div className={style.content}>
         <div className={style.contentTitle}>
-          <h1 className={style.title}>Últimos Pets adicionados</h1>
+          <ul className={ style.menuList }>
+            <li>Cachorros</li>
+            <li>Gatos</li>
+            <li>Pássaros</li>
+            <li>Peixes</li>
+            <li>Roedores</li> 
+          </ul>
         </div>
 
         <div className={style.contentPets}>
@@ -35,7 +41,7 @@ export default function Home() {
             return (
               <a href={`pets/${pet.id}`} key={pet.id}>
                 <div className={style.cardPet}>
-                  <Image src={panteraImg} className={style.petImageProfile} width={260} height={250} alt="test" />
+                  <Image src={panteraImg} className={style.petImageProfile} alt="test" />
                   <div className={style.container}>
                     <h3 className={style.titleCardPet}>{pet.name}</h3>
                     <h3 className={style.descriptionPetCard}>{pet.age} anos,{pet.type}, {pet.genre == 'female' ? 'Femêa' : 'Macho'}, {pet.weight}Kg </h3>
@@ -45,29 +51,7 @@ export default function Home() {
               </a>
             )
           })}
-        </div>
 
-
-
-        <div className={style.contentTitle}>
-          <h1 className={style.title}>Latest on the Property Dogs</h1>
-        </div>
-
-        <div className={style.contentPets}>
-          {pets.map(pet => {
-            return (
-              <a href={`pets/${pet.id}`} key={pet.id}>
-                <div className={style.cardPet}>
-                  <Image src={panteraImg} className={style.petImageProfile} width={260} height={250} alt="test" />
-                  <div className={style.container}>
-                    <h3 className={style.titleCardPet}>{pet.name}</h3>
-                    <h3 className={style.descriptionPetCard}>{pet.age} anos,{pet.type}, {pet.genre == 'female' ? 'Femêa' : 'Macho'}, {pet.weight}Kg </h3>
-                    <h3 className={style.descriptionPetCard}></h3>
-                  </div>
-                </div>
-              </a>
-            )
-          })}
         </div>
       </div>
 
