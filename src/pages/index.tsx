@@ -1,7 +1,10 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import { useEffect, useState } from 'react';
-import { api } from '../services/api'
+import { SetStateAction, useEffect, useState } from 'react';
+import { setupAPIClient } from '../services/api'
+import Layout from '../components/Layout';
+import { withSSRGuest } from '../utils/withSSRGuest';
+import { withSSRAuth } from '../utils/withSSRAuth';
+import { api } from '../services/apiClient';
+import { Can } from '../components/Can';
 
 interface IPet{
   name: string;
@@ -15,26 +18,28 @@ export default function Home() {
 
   const [ pets, setPets ] = useState<IPet[]>([]);
   useEffect(() => {
-    const pets =  api.get('/pets/list').then(response => setPets(response.data))
+    api.get('/me')
+      .then(response => console.log(response))
   }, [])
 
 
   return (
-    <>
-    <h1>listagem de pets</h1>
-    { pets.map(pet => {
-      return (
-        <div key={pet.name}>
-        <h3>Nome: {pet.name}</h3>
-        <br />
-        <h3>Idade: {pet.age}</h3>
-        <br />
-        <h3>Type: {pet.type}</h3><br />
-        <h3>Peso: {pet.weight}</h3><br />
-        </div>
-      ) 
-    }) }
-
-    </>
+    <Can permissions={['metrics.list']}>
+      <Layout>
+        <div>Métricas</div>
+      </Layout>
+    </Can>
+    
   )
 }
+
+export const getServerSideProps = withSSRAuth(async (ctx) => {
+  const apiClient = setupAPIClient(ctx);
+  const response = await apiClient.get('/me');
+
+  console.log(response.data)
+
+  return {
+    props: {}
+  }
+})

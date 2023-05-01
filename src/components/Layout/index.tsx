@@ -10,7 +10,7 @@ export default function Layout({ children }: ILayout) {
   return (
     <>
     <Header />
-    {children}
+      {children}
     <Footer /> 
     </>
   )
