@@ -1,9 +1,8 @@
-import { GetServerSideProps } from 'next';
-import { FormEvent, useContext, useState } from 'react'
-import { parseCookies } from 'nookies'
 
-import { AuthContext } from '../contexts/AuthContext';
-import { withSSRGuest } from '../utils/withSSRGuest';
+import { FormEvent, useContext, useState } from 'react'
+
+import { AuthContext } from '../../contexts/AuthContext';
+import { withSSRGuest } from '../../utils/withSSRGuest';
 
 export default function Home() {
   const [email, setEmail] = useState('');

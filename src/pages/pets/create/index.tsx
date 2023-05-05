@@ -1,12 +1,5 @@
 
-import { SubmitHandler, useForm } from 'react-hook-form';
-import Container from "../../../components/Container";
-import Footer from "../../../components/Footer";
-import Header from "../../../components/Header";
-import { Input } from "../../../components/Input";
-import style from "./pet.module.scss";
-import profile from "../../../../public/profile.svg";
-import Image from 'next/image';
+import { useForm } from 'react-hook-form';
 import { useRouter } from "next/router";
 import { Can } from '../../../components/Can';
 import Layout from '../../../components/Layout';
@@ -34,12 +27,13 @@ export default function CreatePet() {
   }
 
   return (
-    <>
-      <Can permissions={['users.create']}>
+    <>      
         <Layout>
-          <div>Métricas</div>
+          <Can permissions={['users.create']}>
+            <div>Métricas</div>
+          </Can>
         </Layout>  
-      </Can>
+      
     </>
   )
 }
