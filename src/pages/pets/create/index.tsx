@@ -39,13 +39,17 @@ export default function CreatePet() {
 }
 
 export const getServerSideProps = withSSRAuth(async (ctx) => {
-  const apiClient = setupAPIClient(ctx);
-  const response = await apiClient.get('/me');
-  console.log("Response: ", response.data);
+  /*  const apiClient = setupAPIClient(ctx);
+  
+  const response = await apiClient.get('/users/me');
+  console.log("Response: ", response.data); */
   return {
     props: {}
   }
 }, {
-  permissions: ['metrics.list'],
+  permissions: [
+		"metrics.list",
+		"view_product"
+	],
   roles: ['administrator'],
 })

@@ -22,8 +22,10 @@ export default function Home() {
 
   const [pets, setPets] = useState<IPet[]>([]);
   /* useEffect(() => {
-    api.get('/pets/list').then(response => setPets(response.data))
-    console.log(pets);
+    api.get('/users/me').then(response => {
+    console.log(response);
+
+    })
   }, []) */
 
   return (
@@ -33,10 +35,10 @@ export default function Home() {
   )
 }
 export const getServerSideProps = withSSRAuth(async (ctx) => {
-  const apiClient = setupAPIClient(ctx);
-  const response = await apiClient.get('/me');
+  /* const apiClient = setupAPIClient(ctx);
+  const response = await apiClient.get('/users/me');
 
-  console.log(response.data)
+  console.log(response.data) */
 
   return {
     props: {}

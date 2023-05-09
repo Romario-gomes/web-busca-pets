@@ -18,7 +18,7 @@ export default function Home() {
 
   const [ pets, setPets ] = useState<IPet[]>([]);
   useEffect(() => {
-    api.get('/me')
+    api.get('users/me')
       .then(response => console.log(response))
   }, [])
 
@@ -34,9 +34,6 @@ export default function Home() {
 }
 
 export const getServerSideProps = withSSRAuth(async (ctx) => {
-  const apiClient = setupAPIClient(ctx);
-  const response = await apiClient.get('/me');
-  console.log("response: ", response);
   return {
     props: {}
   }
