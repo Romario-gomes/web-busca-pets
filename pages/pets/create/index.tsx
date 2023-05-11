@@ -1,5 +1,3 @@
-
-import { useForm } from 'react-hook-form';
 import { useRouter } from "next/router";
 import { Can } from '../../../components/Can';
 import Layout from '../../../components/Layout';
@@ -18,19 +16,13 @@ type ICreatePet = {
 
 export default function CreatePet() {
   const router = useRouter();
-  const { register, handleSubmit, formState: { errors } } = useForm();
-
-  async function handleCreatePet({name, age, type, weight, genre}: any) {
-    await api.post('pets', {name, age, type, weight, genre});
-    router.push('/');
-    return;
-  }
+  
 
   return (
     <>      
         <Layout>
           <Can permissions={['users.create']}>
-            <div>Métricas</div>
+            <div>Criar Pet</div>
           </Can>
         </Layout>  
       

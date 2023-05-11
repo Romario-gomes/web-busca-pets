@@ -1,12 +1,7 @@
 import { useEffect, useState } from 'react';
-import Container from '../../components/Container';
-import style from "./create/pet.module.scss";
-import Image from "next/image";
-import panteraImg from "../../../public/pantera.jpg";
 import Layout from '../../components/Layout';
-import { api } from '../../services/apiClient';
-import { setupAPIClient } from '../../services/api';
 import { withSSRAuth } from '../../utils/withSSRAuth';
+import { api } from '../../services/apiClient';
 
 
 interface IPet {
@@ -21,16 +16,24 @@ interface IPet {
 export default function Home() {
 
   const [pets, setPets] = useState<IPet[]>([]);
-  /* useEffect(() => {
-    api.get('/users/me').then(response => {
-    console.log(response);
+  
+  useEffect(() => {
+    api.get('/pets/list').then(response => {
+    setPets(response.data);
 
     })
-  }, []) */
+  }, [])
 
   return (
     <Layout>
-      Pets cheguei
+      { pets.map(pet => {
+        return(
+          <>
+            <h1>{pet.name}</h1>
+            <hr />
+          </>
+        )
+      }) }
     </Layout>
   )
 }
@@ -44,4 +47,3 @@ export const getServerSideProps = withSSRAuth(async (ctx) => {
     props: {}
   }
 })
-

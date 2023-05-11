@@ -19,8 +19,7 @@ export function setupAPIClient(ctx = undefined) {
   api.interceptors.response.use(response => {
     return response;
   }, (error: AxiosError) => {
-    if (error.response?.status === 401) {
-      //@ts-ignore
+    if (error.response.status === 401) {
       if (error.response.data?.code === 'token.expired') {
         cookies = parseCookies(ctx);
   
@@ -30,8 +29,8 @@ export function setupAPIClient(ctx = undefined) {
         if (!isRefreshing) {
           isRefreshing = true
 
-          api.post('/refresh', {
-            refreshToken,
+          api.post('/refresh-token', {
+            token: refreshToken,
           }).then(response => {
             const { token } = response.data;
     
@@ -47,10 +46,10 @@ export function setupAPIClient(ctx = undefined) {
     
             api.defaults.headers['Authorization'] = `Bearer ${token}`;
   
-            failedRequestsQueue.forEach((request:any) => request.onSuccess(token))
+            failedRequestsQueue.forEach(request => request.onSuccess(token))
             failedRequestsQueue = [];
           }).catch(err => {
-            failedRequestsQueue.forEach((request:any) => request.onFailure(err))
+            failedRequestsQueue.forEach(request => request.onFailure(err))
             failedRequestsQueue = [];
   
             if (process.browser) {
@@ -60,11 +59,12 @@ export function setupAPIClient(ctx = undefined) {
             isRefreshing = false
           });
         }
-
+  
         return new Promise((resolve, reject) => {
           failedRequestsQueue.push({
             onSuccess: (token: string) => {
               originalConfig.headers['Authorization'] = `Bearer ${token}`
+  
               resolve(api(originalConfig))
             },
             onFailure: (err: AxiosError) => {

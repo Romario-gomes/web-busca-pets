@@ -1,7 +1,9 @@
 import { createContext, ReactNode, useEffect, useState } from "react";
 import { setCookie, parseCookies, destroyCookie } from 'nookies' 
 import Router from 'next/router'
+
 import { api } from "../services/apiClient";
+
 type User = {
   email: string;
   permissions: string[];
@@ -34,7 +36,7 @@ export function signOut() {
 
   authChannel.postMessage('signOut');
 
-  Router.push('/login')
+  Router.push('/')
 }
 
 export function AuthProvider({ children }: AuthProviderProps) {
@@ -110,4 +112,3 @@ export function AuthProvider({ children }: AuthProviderProps) {
     </AuthContext.Provider>
   )
 }
-

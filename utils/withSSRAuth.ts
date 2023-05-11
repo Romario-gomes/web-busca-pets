@@ -1,6 +1,6 @@
 import { GetServerSideProps, GetServerSidePropsContext, GetServerSidePropsResult } from "next";
 import { destroyCookie, parseCookies } from "nookies";
-import decode from 'jwt-decode';
+import decode from 'jwt-decode'
 import { AuthTokenError } from "../services/errors/AuthTokenError";
 import { validateUserPermissions } from "./validateUserPermissions";
 
@@ -17,7 +17,7 @@ export function withSSRAuth<P>(fn: GetServerSideProps<P>, options?: WithSSRAuthO
     if (!token) {
       return {
         redirect: {
-          destination: '/login',
+          destination: '/',
           permanent: false,
         }
       }
@@ -52,7 +52,7 @@ export function withSSRAuth<P>(fn: GetServerSideProps<P>, options?: WithSSRAuthO
     
         return {
           redirect: {
-            destination: '/login',
+            destination: '/',
             permanent: false,
           }
         }
